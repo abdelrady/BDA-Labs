@@ -5,8 +5,19 @@
 data <- read.csv(".\\lab4-data.csv")
 data
 
+attach(data)
+
 # summary for 2 columns (tratement, pain)
 summary(data[,c(1,length(data))])
+
+t <- table(Treatment, Pain)
+t
+addmargins(t)
+prop.table(t, 1) # 1 means summarize by column, 2 means summarize by row
+
+# convert strings into numeric for GLM 
+data$Treatment <- ifelse(data$Treatment == "New Treatment", 1, 0)
+# OR USE: Treatment <- ifelse(Treatment == "New Treatment", 0, 1)
 
 #simple logistic regression model 
 m<-glm(data$Pain ~ data$Treatment, family = binomial)

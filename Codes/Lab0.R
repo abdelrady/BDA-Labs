@@ -30,8 +30,8 @@ scores.matrix[,c(1,ncol(scores.matrix))]
 
 # 3.f
 dimnames(scores.matrix) <- list(
-  paste("Student_", seq(1:nrow(scores.matrix))),
-  paste("Quiz_", seq(1:ncol(scores.matrix)))
+  paste("Student_", seq(1:nrow(scores.matrix)), sep=""),
+  paste("Quiz_", seq(1:ncol(scores.matrix)), sep="")
 )
 print(scores.matrix)
 
@@ -52,7 +52,7 @@ subset(colleges.info, Population > 5000)
 
 #4.b
 colleges.info.2016 <- colleges.info[,c(1:2,4)]
-colleges.info.2016$Cost <- round(colleges.info$Cost + colleges.info$Cost * 0.5, 0)
+colleges.info.2016$Cost <- round(colleges.info$Cost * 1.05, 0)
 print(colleges.info.2016)
 
 

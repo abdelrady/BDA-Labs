@@ -19,7 +19,7 @@ set.3a = setX < set.mean
 setX[setX < set.mean]
 
 # 3.c
-setX[seq(1, length(setX), by = 2)]
+setX[seq(1, length(setX), by = 2)]. Wrong: setX[seq(1, length(setX)/2, by = 2)]
 
 # 3.d
 scores.matrix <- matrix(setX, nrow=2, ncol=5, byrow = TRUE)
@@ -30,7 +30,7 @@ scores.matrix[,c(1,ncol(scores.matrix))]
 
 # 3.f
 dimnames(scores.matrix) <- list(
-  paste("Student_", seq(1:nrow(scores.matrix))),
+  paste("Student_", seq(1:nrow(scores.matrix), sep="")),
   paste("Quiz_", seq(1:ncol(scores.matrix)))
 )
 print(scores.matrix)
