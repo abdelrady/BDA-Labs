@@ -21,7 +21,7 @@ x.mean
 y.mean <- mean(selfesteem.data$Selfesteem)
 y.mean
 
-points(65.28, 3.76, col="red", pch=19)
+points(x.mean, y.mean, col="red", pch=19)
 
 x.sd <- sd(Height)
 x.sd
@@ -50,6 +50,8 @@ beta1
 beta0 <- mean(selfesteem.data$Selfesteem)-beta1*mean(selfesteem.data$Height)
 beta0
 
+?fitted
+selfesteem.data$Selfesteem
 fitted(m)
 
 #compute R square by hand

@@ -35,7 +35,7 @@ rsquare
 multi.m<-glm(data$Pain ~ data$Treatment+data$Age+data$Severe, family = binomial)
 summary(multi.m)
 
-exp(0.02119)
+multi.m$coefficients
 
 # Odd per 1 unit increase in treatment
 exp(multi.m$coefficients[2])

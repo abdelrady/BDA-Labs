@@ -1,0 +1,96 @@
+Midterm review
+
+1-MCQ, some cases more than one answer (about 10)
+2-Short answer questions-> like give you a dataset and asks to classify for predicting the label for the sample computation
+algorithm kind of questions- about 3 or 5 questions
+3-very short answers  about 2 or 3
+
+no calculator :/
+you can bring a cheat sheet: you can write anything (nos el A4)  :)
+read or know the output of specific code, but there won't be question for writing code (any code in lectures or demos)
+anything marked as optional in the slides when it 
+
+
+Lesson 0: propability, conditional propability
+what is the meaninng of central tendency and variation and how to compute quartile range
+Lesson 1: not in exam
+Lesson 2: linear regression: what kind of info scatter plot tells us? form direction and strength
+and correlation is the mathemical mesurement of strength (the closer the value to one the stronger the relationship is)
+properties for correlation values
+simple linear regression equation betas equation and the interpretation , how to estimate beta 0 and beta 1 slide 17
+Then using R code (to be able to read it)
+relationship between beta 1 hat and correlation r, slide 21
+
+Lesson 3: same as 2 with multiple
+
+Lesson4: Why use logistic regression?  the equation with betas , slide 12 equations
+proofs of the equations, how we come up with this equation for P. 
+interpretation
+then maximum likelhood how to estimate beta 0 and beta 1 hat
+pi is the predicted propability from the model , qi to measure how close the predicted result is to the real or actual event result
+
+how good is the model, mcfadden sudo r suqare
+
+
+Lesson 5: Type of data qualitative, quantitative to see what type of the data
+see the code for summerizing the data and see the code, what it does and what it gives us
+you need to be able to summerize data from generated plot
+
+exam question: code and output plot from the code, then you say what information we get from the plot to summerize the data
+example plot tells us the frequencies, the number of passengers who survived from titanic is about 600 slide 10
+
+pie chart example: percentage of each passenger class 
+
+Lesson 6: 
+what is supervised and unsupervised and difference
+two step process classification 
+then bayes rule and using it for classification
+slide 16 , propability x belong to c1 then to c2 ...etc then we give it a class with the highest propability
+
+Iris example r code, what is the output from the code and how do we interpret that output
+Weka is not in the exam
+
+Lesson 7: other measures for atribyte slection slide 24  and overfitting and tree pruning is not in exam 
+pseudo code for tree we won't write this code but we can explain it 
+few question on which attribute to select? we use information gain
+slide 11
+2- depends on type of attribute and gain if categorial number of tests=number of values, if numberic data we use someting like
+slide 26
+
+quesion last one in slide 11: if data in the sample belong to same class we stop the process and another way to stop it is the way the technique tree pruning used (optional) 
+
+calculation the information gain and entropy, slide 19
+
+
+Lesson 8: KNN simplet classification algo, how does it work? different measuremenets
+and confusion matrix and tp fp tn fn and calculate accuracy sensitivity .....etc
+different method for specifying accuracy
+and how do we create ROC curve from scratch
+
+ROC curve , we try to have higher tp rate and lower fp rate
+(not in exam) the next 3 lines 
+so from the graph as the fpr increases the tpr also increases
+how much false p rate we need to get a good amount of true pos rate
+f(x)=tpr-fpr   so it is a peak in the graph
+
+but you need to know how to compare performance of two ROC curves slide 33 (example of very short answer questions :/ )
+slide 34 is not in the exam creating roc in range slide 34
+
+
+example of short answer question (last two labes given a dataset compute information gain...etc)
+
+
+another example of questions can we use logistic regression model for classification? yes it propba is > 0.5 we can classify in yes class and if less we can classify in no classes slide 3
+
+P( a1=medium | c=yes) =1/8  among yes classes what is the propb that a1=medium  (yes total=8 and medium total =1)
+
+
+
+
+
+
+
+
+
+
+

@@ -32,3 +32,4 @@ regss <-sum((fitted(m) -mean(prestige.data$PrestigeScore))^2)
 residss <-sum((prestige.data$PrestigeScore-fitted(m))^2)
 rsquare <- regss/totalss
 rsquare
+

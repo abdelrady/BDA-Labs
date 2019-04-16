@@ -1,0 +1,292 @@
+Lecture 0.
+
+Measures of central tendency: the descriptive measures that indicate the center of the data set or the most typical value of the data set.
+Mean: sum of numbers in data set divided by length ~ average 
+Median: the number that split the top 50% & bottom 50 %
+Mode: The value that occur most frequently in the dataset
+
+Measures of variation: describe the spread or variability of data
+Range: maximum value - minimum value
+Standard Deviation: measure of deviation from the mean (S)
+Variance: S.Square = Sum((xi-x.mean)square)/n-1
+* The more variation there is in the data set the larger the standard deviation
+* We use quartile ranges because mean & std are sensitives to the extreme values in dataset
+IQR = Interquartile range = Q3 - Q1
+
+P(E|F) = P(E intersect F) / P(F)
+
+P(A union B) = P(A) + P(B) - P(A intersect B)
+P(A intersect B) = P(B) * P(A | B)   ~    P(A|B) = P(A intersect B) / P(B)
+
+* Event A & B are mutually exclusive if it's impossible for both events to occur at the same time.
+	then P(A union B) = P(A) + P(B)
+
+* Event A & B are independent if the occurrence of one event doesn't effect the likelihood of the other event occurring.
+	then p(A and B) = P(A intersect B) = P(A) * P(B)
+
+P(B) = P(B | A) * P(A) + P(B | -A) * P(-A)
+
+
+R type hierarchy is shown: logical < integer < numeric < double < complex < character
+
+------------------------------------------------------------------------------------------------------------------
+Lecture #1
+
+Correlation (denoted as r) or the correlation coefficient is a measure of the strength and direction of a linear relationship between two quantitative variables in a sample.
+
+Correlation measures the strength of a linear relationship only. Correlation should not be used to describe a curved relationship - even if the association is strong.
+
+The equation for the simple linear regression line is given by
+y=β0+β1x
+where
+y is the response or dependent variable
+x is the explanatory or independent variable
+β0 is the intercept (the value of y when x=0)
+β1 is the slope (the expected change in y for each one-unit change in x)
+
+
+𝑒𝑖 = 𝑦𝑖 - 𝑦𝑖.estimated
+Residual sum of squares ~ RSS = square(e1) + square(e2) + … + square(en)
+
+the regression component = 𝑦.estimated - 𝑦.mean
+the residual component = yi - 𝑦i.estimated
+
+Total SS = Res SS + Reg SS. 
+
+One of the measures that we use to assess the fit of the data is the coefficient of variation (R2, read “R-squared”).
+	R2 = 𝑅𝑒𝑔 𝑆𝑆 / 𝑇𝑜𝑡𝑎𝑙 𝑆𝑆 = (Total SS - Res SS) / Total SS = 1 - (Res SS / Total SS) 
+The value of R2 can range between 0 and 1, and the higher its value the more accurate the regression model is.
+
+
+B0 should give the expected value of Y if X is Zero. So, in this case Y would be (- 0.38031872) if person height is Zero.
+B1 (slope) should give the expected change in Y for one unit increase in X. So, in this case 1 unit increase in X would result in 0.063424 increase in the resulted Y.
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+Lecture #3
+
+Multiple linear regression
+
+The equation for the simple linear regression line is given by
+y=β0+β1x1 +β2x2 +… + βkxk
+where
+y is the response or dependent variable
+x1,x2,…,xk are the explanatory or independent variables
+β0 is the intercept (the value of y when all independent variables x1,x2,…,xk are set to 0)
+βi is the slope (the expected change in y for each one unit change in xi, after adjusting for x1,x2,…,xi-1,xi+1,…,xk)
+
+
+Disadvantages of Regression Models 
+	1- Can not cover for poor data quality issues 
+	2- Does not automatically take care of non-linearity 
+	3- Usually works only with numeric data
+
+------------------------------------------------------------------------------------------------------------------
+
+Lecture #4
+
+logit(p) = B0 + B1 * X
+That is, the log odds (logit) is assumed to be linearly related to the independent variable x
+
+odds = p / (1–p) -> probability that event occur / probability that event doesn't occur
+logit(p) = ln(odds) = ln (p/(1-p))
+
+
+Logisitic regression model: ln[p/(1-p)] = β0 + β1x
+Multiple Logisitic regression model: ln[p/(1-p)] = β0 + β1X1 + B2X2 + ... + BnXn
+
+The "logit" model solves these problems: ln[p/(1-p)] = β0 + β1x
+p is the probability of a “success”
+p/(1-p) are the odds of the event occurring
+ln[p/(1-p)] is the log odds of the event, or "logit"
+x is the explanatory variable
+β0 is the intercept
+β1 is the regression coefficient
+
+ln(p/1-p) = B0 + B1 * X
+then p/1-p = e.pow (B0 + B1 * X)
+then p = e.pow (B0 + B1 * X) - P * e.pow (B0 + B1 * X)
+then P + P * e.pow (B0 + B1 * X) = e.pow (B0 + B1 * X)
+then P (1 + e.pow (B0 + B1 * X)) = e.pow (B0 + B1 * X)
+then P = e.pow (B0 + B1 * X) / (1 + e.pow(B0 + B1 * X))
+the devide both nominator & denominator by e.pow(B0 + B1 * X)
+then P = 1 / (1 + e.pow(-(B0 + B1 * X)))
+
+The logistic distribution constrains the estimated probabilities to lie between 0 and 1.
+If you let β0 + β1x =0, then p = .50
+As β0 + β1x gets really big, p approaches 1
+As β0 + β1x gets really small, p approaches 0
+
+
+Odds ratio:
+𝑜𝑑𝑑1/𝑜𝑑𝑑2 = 𝑒.pow(B1 * (x1 − x2))
+if x1−x2= 1, 𝑒.pow(B1 * (x1 − x2)) = 𝑒.pow(B1) which can be interpreted as the relative increase in odds for every 1 unit increase in x.
+
+Maximum Likelihood Estimation: is a statistical method for estimating the coefficients for the logistic model.
+
+The likelihood function (L) is the product of computed probabilities qi of the data points occur in the sample: 
+L = q1* q2* … * qn
+𝑞𝑖= 𝑝𝑖, 𝑖𝑓 𝑖𝑡ℎ 𝑑𝑎𝑡𝑎 𝑝𝑜𝑖𝑛𝑡 𝑖𝑛𝑑𝑖𝑐𝑎𝑡𝑒𝑠 𝑐𝑜𝑟𝑜𝑛𝑎𝑟𝑦 𝑒𝑣𝑒𝑛𝑡 
+𝑞𝑖= 1−𝑝𝑖, 𝑖𝑓 𝑑𝑎𝑡𝑎 𝑝𝑜𝑖𝑛𝑡 𝑑𝑜𝑒𝑠 𝑛𝑜𝑡 𝑖𝑛𝑑𝑖𝑐𝑎𝑡𝑒 𝑡ℎ𝑖𝑠
+
+stats: Log(L) = Log(q1) + log(q2) + .... + log(qn)
+
+--------------
+
+Lecture #5
+
+table(data$survived) 
+0 	1
+809 500
+
+table(data$survived) / length(data$survived) == prop.table(table(data$survived))
+	0 		1
+0.618029 0.381971
+
+
+
+(outliers > Q3+1.5 * IQR or < Q1 – 1.5 * IQR)
+
+prob.table(data) => probability across all population
+
+prob.table(data, 1) => probability across row
+
+prob.table(data, 2) => probability across column
+
+Graphically displaying quantitative data.
+	1- Dot plot
+	2- Jitter plot
+	3- Box plot (box and whisker plots)
+	4- Histogram
+	5- Density plot
+
+
+Graphically displaying bivariate qualitative data.
+	1- grouped frequency bar chart
+	2- stacked frequency bar chart
+	3- spine plot
+	4- mosaic plot
+
+Graphically Displaying Bivariate Quantitative Data
+	1- scatterplot
+	2- binned frequency Heatmap
+	3- contour plot
+	4- level plot
+	5- mesh plot
+	6- surface plot
+	7- step chart
+	8- line chart
+	9- area chart
+
+Graphically Displaying Bivariate Categorical and Numeric data
+	1- bivariate bar chart
+	2- bivariate box plot
+	3- bivariate violin plot
+
+
+--------------
+
+Lecture #6 Bays rule
+
+* Supervised learning: The data (observations, measurements, etc.) are accompanied by class labels indicating the class of the observations (eg. classification) + New data is classified based on the model
+* Unsupervised learning: The class labels of data are unknown. Given a set of measurements, observations, etc. with the aim of establishing the existence of classes or clusters in the data (e.g. clustering)
+
+
+Classification steps:
+1- Model construction: describing a set of predetermined classes
+2- Model usage: classify future/unknown tuples
+	The known label of test sample is compared with the classified result from the model
+	If the accuracy is acceptable then model is used to classify data tuples with unknown labels. Otherwise build another model and repeat.
+
+
+Bayes’ Rule shows the relation between one conditional probability and its inverse.
+P(A | B) = P(B | A) * P(A) / P(B)
+
+P(A | B) is the posterior probability
+P(B | A) is the conditional probability
+
+
+P(C1|X) = P(X|C1) * P(C1) / P(X)
+P(C2|X) = P(X|C2) * P(C2) / P(X)
+
+
+--------------------
+
+Lecture #7 - Decision trees
+
+Algorithm ID3(S)
+Input Data Set S
+Output Decision Tree DT
+	if all data in S belong to the same class c then
+		return a new leaf and label it with c
+	else
+		Select an attribute A according to some heuristic function 
+		Generate a new node DT with A as test
+		for each value vi of A do
+		Si <- all data in S with A = vi
+		DTi <- ID3(Si) //use ID3 to construct a decision tree DTi for Si
+		Generate an edge that connects DT and DTi
+		return DT
+
+Determining the Best Split:
+* We want to grow a simple tree that prefers attributes to split the data so that each successor node is as pure as possible
+
+* You can think of purity as being the opposite of entropy.
+
+* Entropy(N) only tells us about the distribution of classes at a particular node N, but does not tell us about possible split.
+
+* When a decision has to be made to select an attribute to split the data items in this node, the attribute that results in the highest information gain is the one that is selected.
+Information gain is defined as:
+Gain(N, A)=Entropy(N)−EntropyA(N) 
+Note: Maximizing information gain is equivalent to minimizing average entropy.
+
+--------------------
+
+Algorithm KNN(X, Y, K, s)
+Input training data X, class labels Y of X,
+K neighbors to consider, unknown sample s
+Output class label for s
+	for i <- 1 to |X| do
+		compute distance d(Xi , s)
+	I <- indices for the K smallest distances d(Xi , s)
+	return majority label for {Yi | where i is in I}
+
+
+Manhattan (city block) distance
+𝑑(𝐴,𝐵)=𝑥1−𝑥2+|𝑦1−𝑦2|
+
+Euclidean distance
+𝑑(𝐴,𝐵)=sq.root(|𝑥1−𝑥2|2+|𝑦1−𝑦2|2)
+
+Min-max normalization can be used to transform a value v of a numeric attribute A to v’ in the range [0,1] by computing
+𝑣′= 𝑣−𝑚𝑖𝑛𝐴 / 𝑚𝑎𝑥𝐴−𝑚𝑖𝑛𝐴
+
+Sensitivity: True Positive recognition rate (also called recall) - Sensitivity = TP/P
+Specificity: True Negative recognition rate - Specificity = TN/N
+
+Precision = TP/(TP+FP) 
+F-measure = (2∗𝑝𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛∗𝑟𝑒𝑐𝑎𝑙𝑙) / (𝑟𝑒𝑐𝑎𝑙𝑙+𝑝𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛)
+
+
+Evaluating Classifier Accuracy
+1- k-fold: k=10. folds are stratified (equally distributed)
+	1 fold is for testing and other 9 are for training
+	Accuracy = (# tuples correctly classified) / (total # tuples)
+2- Bootstrap: A common one is .632 bootstrap with replacement
+	Accuracy = 0.632 * acc_test + 0.368 * acc_train  
+
+ROC(Receiver Operating Characteristics) -> Shows the trade-off between the true positive rate (Y-Axis), and false positive rate (X-Axis)
+(TPR = TP / (TP + FN)=TP/P)
+(FPR = FP / (FP + TN)=FP/N)
+Steps: 
+1- Rank the test tuples in decreasing order of predicted probability
+2- calculate TP, FP, TN, FN, TPR, FPR
+
+
+
+
+
+
+
