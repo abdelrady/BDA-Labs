@@ -1,4 +1,4 @@
-#install.packages("arules")
+install.packages("arules")
 library("arules")
 
 #create a sparse matrix
@@ -10,6 +10,8 @@ summary(grocery)
 data("Groceries")
 
 summary(Groceries)
+
+?inspect
 
 #look at first five transactions
 inspect(Groceries[1:5])
@@ -31,7 +33,7 @@ itemFrequencyPlot(Groceries, topN = 20)
 
 #use apriori to generate rules
 rules <- apriori(Groceries, 
-                 parameter = list(support = 0.006, confidence = 0.25, minlen = 2))
+                 parameter = list(support = 0.006, confidence = 0.25, minlen = 3))
 summary(rules)
 inspect(rules[1:5])
 

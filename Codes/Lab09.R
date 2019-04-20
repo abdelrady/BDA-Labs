@@ -1,4 +1,4 @@
-install.packages("arules")
+#vinstall.packages("arules")
 library("arules")
 
 #create a sparse matrix
@@ -22,4 +22,10 @@ inspect(sub.rules)
 
 
 sub.rules.2 <- subset(rules, (items %in% "berries" | items %in% "yogurt") & lift > 3)
+# or
+sub.rules.2 <- subset(rules, items %in% c("berries", "yogurt") & lift > 3)
+sub.rules.2
 inspect(sub.rules.2)
+
+
+
