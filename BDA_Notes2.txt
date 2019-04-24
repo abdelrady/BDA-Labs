@@ -1,0 +1,60 @@
+||D1|| = sq.root(sum(d1^2) for all d1)
+
+
+Lesson #9
+
+Absolute support, or, support count of X
+Relative support: The fraction of transactions that contain X
+Frequent Itemsets: An itemset X is frequent if X’s support is no less than a predefined minimum support threshold, called minsup.
+An association rule has the form R1: X -> Y, where X and Y are itemsets. The rule says "whenever X occurs, we expect to find Y as well“.
+Support of R1: s(R1) = support(X uinion Y) or probability that a transaction contains X and Y
+Confidence of R1: c(R1) = support(X union Y) / support(X), or conditional probability that a transaction having X also contains Y.
+The confidence of a rule tells us how reliable the rule is. The closer the value c(R1) comes to 1, the more reliable the rule R1 is.
+A strong rule is a rule X -> Y with the following two properties:
+	1- support ≥ minimum support (minsup) and
+	2- confidence ≥ minimum confidence (minconf).
+
+The Apriori Algorithm
+Two step process:
+	1- First, mine all frequent patterns. A frequent pattern is also called a frequent itemset or a large itemset.
+		a- join step: Generate all possible candidate itemsets of size k+1 ( we join only if the first k-1
+items are identical.)
+		b- prune step: Remove those candidates in Ck+1 that cannot be frequent. (Using downward closure property)
+	2- Second, mine strong rules from frequent itemsets.
+		a- For each frequent itemset I, and for each proper nonempty subset X of I, Let Y = I - X then X -> Y is a strong rule if Confidence(X -> Y) ≥ minconf
+
+The apriori property (downward closure property): A subset of a frequent itemset must also be a frequent itemset.
+
+The lift of a rule measures how much more likely one itemset is purchased with another itemset compared to its typical rate of purchase.
+
+(Negative correlation means X and Y occur together less frequently than would happen by chance.)
+To see if a rule X->Y indicates that Y is purchased more frequently when X is purchased than otherwise, compare confidence(X->Y) to support(Y). This gives the Lift Formula: 𝑙𝑖𝑓𝑡 𝑋 → 𝑌 = 𝑐𝑜𝑛𝑓𝑖𝑑𝑒𝑛𝑐𝑒(𝑋→𝑌) / 𝑠𝑢𝑝𝑝𝑜𝑟𝑡(𝑌)
+• lift > 1: positively correlated
+• lift < 1: negatively correlated,
+• lift = 1: independent (no correlation)
+
+
+---------------------------------------------------------------------------------------------------------------------------
+Cluster Analysis = data segmentation
+
+Clustering is a technique used for automatic identification of natural groupings of things
+
+A good clustering method will produce high quality clusters
+ * high intra-class similarity: cohesive within clusters
+ * low inter-class similarity: distinctive between clusters
+
+Clustering Types
+	1- Bayesian (Decision Based, nonparametric)
+	2- Hierarchical (Divisive, agglomerative)
+	3- Partitional (Centroid or K-Means, Model Based, Graph Theoretic, Spectral)
+
+* Hierarchical algorithms find successive clusters using previously established clusters. These algorithms can be either agglomerative (“bottom-up”) or divisive (“top-down”):
+1- Agglomerative algorithms begin with each element as a separate cluster and merge them into successively larger clusters;
+2- Divisive algorithms begin with the whole set and proceed to divide it into successively smaller clusters.
+
+* Partitional algorithms: Given a set of n objects, a partitioning method constructs k partitions of the data, where each partition represents a cluster and k <= n.
+
+
+
+sup(x & y) = 362 / (362+49+823+1527)
+sup(x) = (362+823) / (362+49+823+1527)
